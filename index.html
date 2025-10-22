@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pranav Patil — Web Developer (React/Node)</title>
+  <meta name="description" content="Pranav Patil — Web Developer focused on React, Node.js, Express, and MongoDB. Projects: OCR Document Extractor, E‑commerce (ComponentX), AI Healthcare Chatbot, Face Recognition Attendance." />
+  <meta name="theme-color" content="#2563eb" />
+  <meta property="og:title" content="Pranav Patil — Web Developer" />
+  <meta property="og:description" content="Projects in React, Node.js, MongoDB, and AI/OCR, including an E‑commerce site." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://your-portfolio-url" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#ffffff; --text:#0f172a; --muted:#475569; --card:#f8fafc;
+      --border:#e5e7eb; --accent:#2563eb; --accent-contrast:#ffffff;
+      --shadow: 0 6px 24px rgba(15, 23, 42, 0.08);
+    }
+    [data-theme="dark"]{
+      --bg:#0b1220; --text:#e5e7eb; --muted:#94a3b8; --card:#0f172a; --border:#1f2a44; --shadow: 0 6px 24px rgba(2, 6, 23, 0.5);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);scroll-behavior:smooth}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{max-width:1024px;margin:0 auto;padding:0 20px}
+    .skip{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+    .skip:focus{left:1rem;top:1rem;width:auto;height:auto;background:#111827;color:#fff;padding:8px 12px;border-radius:8px;z-index:1000}
+
+    /* Header */
+    header{position:sticky;top:0;background:var(--bg);border-bottom:1px solid var(--border);z-index:100}
+    .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+    .brand{display:flex;gap:10px;align-items:center;font-weight:700}
+    .brand .dot{width:10px;height:10px;border-radius:50%;background:var(--accent)}
+    .nav-links{display:flex;gap:18px;align-items:center}
+    .nav-links a{color:var(--text);opacity:.85}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;border:1px solid var(--border);background:transparent;color:var(--text);font-weight:600}
+    .btn.primary{background:var(--accent);color:var(--accent-contrast);border-color:transparent}
+    .btn:hover{box-shadow:var(--shadow)}
+    .icon-btn{border:none;background:transparent;padding:8px;border-radius:10px;cursor:pointer;color:var(--muted)}
+    .icon-btn:hover{background:var(--card);color:var(--text)}
+    .mobile-toggle{display:none}
+
+    /* Hero */
+    .hero{padding:56px 0 24px}
+    .hero-inner{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;align-items:center}
+    .pill{display:inline-block;background:var(--card);border:1px solid var(--border);padding:6px 10px;border-radius:999px;color:var(--muted);font-size:12px}
+    h1{font-size:36px;line-height:1.2;margin:16px 0 8px}
+    .lead{color:var(--muted);font-size:16px}
+    .cta{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap}
+
+    /* Sections */
+    section{padding:36px 0;border-top:1px solid var(--border)}
+    section h2{font-size:22px;margin:0 0 16px}
+    .grid{display:grid;gap:16px}
+    .grid.cards{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px;box-shadow:var(--shadow)}
+    .card h3{margin:0 0 8px;font-size:18px}
+    .sub{color:var(--muted);font-size:14px}
+    .meta{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+    .tag{font-size:12px;padding:4px 8px;border-radius:999px;background:#e2e8f0;color:#0f172a;border:1px solid #d0d7e2}
+    [data-theme="dark"] .tag{background:#0b223a;color:#c7d2fe;border-color:#1e293b}
+    .bullets{margin:8px 0 0;padding-left:18px;color:var(--muted)}
+    .links{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
+
+    /* Lists */
+    .list{display:grid;gap:10px}
+    .list-item{display:flex;gap:12px}
+    .list-item .dot{margin-top:8px;width:8px;height:8px;border-radius:50%;background:var(--accent)}
+
+    /* Footer */
+    footer{padding:24px 0;border-top:1px solid var(--border);color:var(--muted);font-size:14px;text-align:center}
+
+    /* Responsive */
+    @media (max-width: 840px){
+      .hero-inner{grid-template-columns:1fr}
+      .nav-links{display:none}
+      .mobile-toggle{display:inline-flex}
+    }
+    .show-nav .nav-links{display:flex;flex-direction:column;position:absolute;left:0;right:0;top:64px;background:var(--bg);padding:12px 20px;border-bottom:1px solid var(--border)}
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header>
+    <div class="container nav" id="top">
+      <div class="brand">
+        <span class="dot" aria-hidden="true"></span>
+        <span>Pranav Patil</span>
+      </div>
+
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+        <a class="btn" href="https://drive.google.com/file/d/1xw0NsN82Ss67fIhpZeo1MCl4GzsyinHq/view?usp=sharing" target="_blank" rel="noopener noreferrer">Download Resume</a>
+        <button class="icon-btn" id="themeToggle" aria-label="Toggle theme">🌗</button>
+      </nav>
+
+      <div class="mobile-toggle">
+        <button class="icon-btn" id="menuToggle" aria-label="Toggle menu">☰</button>
+        <button class="icon-btn" id="themeToggleMobile" aria-label="Toggle theme">🌗</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <!-- Hero -->
+    <section class="hero" id="home" aria-label="Intro">
+      <span class="pill">Web Developer • React • Node • MongoDB</span>
+      <div class="hero-inner">
+        <div>
+          <h1>Building practical web apps with React, Node.js, and MongoDB</h1>
+          <p class="lead">
+            I’m Pranav, a B.E. Electronics & Computer Science student (2026) from Mumbai.
+            I’ve built an OCR Document Extractor, a React‑based E‑commerce site (ComponentX),
+            an AI Healthcare Chatbot (Hugging Face + Streamlit), and a Face‑Recognition Attendance system (OpenCV/dlib).
+          </p>
+          <div class="cta">
+            <a class="btn primary" href="https://drive.google.com/file/d/1xw0NsN82Ss67fIhpZeo1MCl4GzsyinHq/view?usp=sharing" target="_blank" rel="noopener noreferrer">Download Resume</a>
+            <a class="btn" href="https://github.com/PRANAVPRASHANTPATIL" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a class="btn" href="https://www.linkedin.com/in/pranav-patil-88612b2a8/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" aria-label="About Me">
+      <h2>About Me</h2>
+      <div class="grid">
+        <p>
+          I enjoy turning ideas into working products. I focus on writing clean, readable code,
+          keeping APIs simple, and shipping small features quickly. On the backend I build REST APIs with Node.js + Express and MongoDB (Atlas),
+          and on the frontend I’m comfortable with React and modern JavaScript (ES6+).
+        </p>
+        <p>
+          Recent work includes:
+          - An OCR pipeline (OpenCV + Tesseract) that extracts structured fields from receipts/invoices with preprocessing
+            like deskew, denoise, and adaptive thresholding.
+          - ComponentX: a React‑based e‑commerce UI with product catalog, product pages, and a client‑side cart, using reusable components and routing.
+          - An AI Healthcare Chatbot combining rule‑based flows and transformer models, wrapped in a Streamlit UI.
+          - A Face‑Recognition Attendance app that moved from Haar Cascades to dlib for more reliable detection.
+        </p>
+        <p>
+          What I bring:
+          - Solid understanding of HTTP,  basic auth, and client–server communication.
+          - Git/GitHub workflows (branches, PRs), environment configs (dotenv), and Postman for API testing.
+          - Deployments on Vercel/Netlify/Render; basic CORS and security best practices.
+          - Clear documentation and focus on accessibility and responsive UI.
+        </p>
+        <p>
+          Currently learning: Next.js, TypeScript, and testing (Jest + Supertest). I’m looking for a Web Development Intern role where I can
+          build real features, fix bugs, and learn best practices from a team.
+        </p>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" aria-label="Skills">
+      <h2>Skills</h2>
+      <div class="meta">
+        <span class="tag">HTML5</span>
+        <span class="tag">CSS3</span>
+        <span class="tag">JavaScript </span>
+        <span class="tag">React</span>
+        <span class="tag">Node.js</span>
+        <span class="tag">Express</span>
+        <span class="tag">MongoDB</span>
+        <span class="tag">Mongoose</span>
+        <span class="tag">Git/GitHub</span>
+        <span class="tag">Postman</span>
+        <span class="tag">Python</span>
+        <span class="tag">OpenCV</span>
+        <span class="tag">Tesseract OCR</span>
+        <span class="tag">dlib</span>
+        <span class="tag">Hugging Face</span>
+        <span class="tag">Streamlit</span>
+        <span class="tag">Next.js (learning)</span>
+        <span class="tag">TypeScript (learning)</span>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" aria-label="Projects">
+      <h2>Projects</h2>
+      <div class="grid cards">
+        <!-- OCR Project -->
+        <article class="card">
+          <h3>OCR Document Extractor</h3>
+          <div class="sub">Python • OpenCV • Tesseract • (optional: FastAPI/Flask)</div>
+          <ul class="bullets">
+            <li>Built an OCR pipeline with preprocessing (grayscale, deskew, denoise, adaptive threshold) for cleaner text extraction.</li>
+            <li>Extracts key fields from receipts/invoices (date, vendor, totals) and returns structured JSON.</li>
+            <li>Supports JPG/PNG/PDF uploads via a simple UI/API; includes regex and fuzzy matching to fix common OCR errors.</li>
+            <li>[Optional] Achieved ~[X]% field‑level accuracy on [N] test docs after tuning.</li>
+          </ul>
+          <div class="links">
+            <a class="btn" href="https://github.com/PRANAVPRASHANTPATIL/Google-vision-ocr" target="_blank" rel="noopener noreferrer">GitHub</a>
+          </div>
+        </article>
+
+        <!-- E-commerce Website -->
+        <article class="card">
+          <h3>ComponentX — E‑commerce Website</h3>
+          <div class="sub">React • JavaScript • Responsive UI</div>
+          <ul class="bullets">
+            <li>Built a modern e‑commerce interface with product catalog and product detail views using reusable components.</li>
+            <li>Implemented client‑side cart (add/remove/update), routing, and basic state management with React hooks.</li>
+            <li>Added search and category filters; prepared an API layer for future backend integration.</li>
+          </ul>
+          <div class="links">
+            <a class="btn" href="https://github.com/PRANAVPRASHANTPATIL/ComponentX" target="_blank" rel="noopener noreferrer">GitHub</a>
+          </div>
+        </article>
+
+        <!-- AI Healthcare Chatbot -->
+        <article class="card">
+          <h3>AI Healthcare Chatbot</h3>
+          <div class="sub">Python • Streamlit • Hugging Face</div>
+          <ul class="bullets">
+            <li>Hybrid rule‑based + transformer responses with conversation history and fallbacks.</li>
+            <li>Streamlit UI; non‑diagnostic disclaimers and prompt guardrails.</li>
+            <li>Configurable model selection (e.g., distilbert‑base‑uncased‑finetuned‑squad).</li>
+          </ul>
+          <div class="links">
+            <a class="btn" href="https://github.com/PRANAVPRASHANTPATIL/AI-HEALTHCARE-CHATBOT" target="_blank" rel="noopener noreferrer">GitHub</a>
+          </div>
+        </article>
+
+        <!-- Face Recognition Attendance -->
+        <article class="card">
+          <h3>Face‑Recognition Attendance</h3>
+          <div class="sub">Python • OpenCV • dlib</div>
+          <ul class="bullets">
+            <li>Migrated Haar → dlib for more reliable detection across lighting and angles.</li>
+            <li>Pipeline: detect → encode → match → mark attendance; generates daily CSV logs.</li>
+          </ul>
+          <div class="links">
+            <a class="btn" href="https://github.com/PRANAVPRASHANTPATIL/Attendance_app" target="_blank" rel="noopener noreferrer">GitHub</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience" aria-label="Experience">
+      <h2>Experience</h2>
+      <div class="list">
+        <div class="list-item">
+          <span class="dot" aria-hidden="true"></span>
+          <div>
+            <strong>AI Healthcare Chatbot Developer Intern — TechSaksham (AICTE)</strong>
+            <div class="sub">Jan 2025 – Feb 2025</div>
+            <div class="sub">Built an NLP chatbot (Hugging Face + Streamlit), combined rule‑based and model‑generated responses, added guardrails and documentation.</div>
+          </div>
+        </div>
+        <div class="list-item">
+          <span class="dot" aria-hidden="true"></span>
+          <div>
+            <strong>Volunteer Educator & Coordinator — Junoon Foundation</strong>
+            <div class="sub">Aug 2023 – Sep 2023</div>
+            <div class="sub">Taught underprivileged students and created a monthly “Calendar of Learning.”</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education" aria-label="Education">
+      <h2>Education</h2>
+      <div class="list">
+        <div class="list-item">
+          <span class="dot" aria-hidden="true"></span>
+          <div>
+            <strong>B.E., Electronics & Computer Science — Thakur College of Engineering & Technology</strong>
+            <div class="sub">2022 – 2026 • CGPA: 8.18/10</div>
+          </div>
+        </div>
+        <div class="list-item">
+          <span class="dot" aria-hidden="true"></span>
+          <div>
+            <strong>Meta Frontend Developer — Coursera</strong>
+            <div class="sub">Jan 2025</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" aria-label="Contact">
+      <h2>Contact</h2>
+      <div class="grid">
+        <p class="sub">Open to Web Development Intern roles and project collaborations.</p>
+        <div class="links">
+         
+          <a class="btn" href="https://www.linkedin.com/in/pranav-patil-88612b2a8/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a class="btn" href="tel:+917821953996">Call: +91‑7821953996</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © <span id="year"></span> Pranav Patil • Mumbai, India
+    </div>
+  </footer>
+
+  <script>
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Theme toggle with localStorage
+    const applyTheme = (t)=>document.documentElement.setAttribute('data-theme', t);
+    const saved = localStorage.getItem('theme');
+    if(saved){ applyTheme(saved); }
+    const toggleTheme = ()=>{
+      const current = document.documentElement.getAttribute('data-theme') || 'light';
+      const next = current === 'dark' ? 'light' : 'dark';
+      applyTheme(next); localStorage.setItem('theme', next);
+    };
+    document.getElementById('themeToggle').addEventListener('click', toggleTheme);
+    document.getElementById('themeToggleMobile').addEventListener('click', toggleTheme);
+
+    // Mobile menu
+    const header = document.querySelector('header');
+    document.getElementById('menuToggle').addEventListener('click', ()=>{
+      header.classList.toggle('show-nav');
+    });
+  </script>
+</body>
+</html>
